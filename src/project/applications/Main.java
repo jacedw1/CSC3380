@@ -21,8 +21,6 @@ public class Main extends Application {
 
     @Override
     public void init() throws Exception {
-
-        //please never delete this line or i will personally fill your underwear with those spiky things from trees that get stuck in fabric
         super.init();
 
         //initiate connection with database using your own data
