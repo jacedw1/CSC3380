@@ -1,11 +1,11 @@
-package project.applications.controllers;
+package project.applications.LoginUtils;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import project.applications.Main;
+import project.Main;
 import project.other.Queries;
 import project.other.StaffWrapper;
 
@@ -40,7 +40,6 @@ public class LoginController {
 
         //Case: Username Does Not Exist
         if(!Main.getUsernameHandler().containsUser(username)){
-            usernameLabel.setText(username);
             resultLabel.setText("Login Failed!");
             usernameLabel.setText("Incorrect Username");
             return;

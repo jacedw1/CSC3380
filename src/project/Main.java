@@ -1,4 +1,4 @@
-package project.applications;
+package project;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -23,6 +23,7 @@ public class Main extends Application {
     public void init() throws Exception {
         super.init();
 
+        databaseManager = new DatabaseManager("jdbc:mysql://localhost:3306/", "testing_java", "root", "kj071720");
         //initiate connection with database using your own data
 //        databaseManager = new DatabaseManager(url, databaseName, username, password);
 //        should look similar to this:
@@ -51,8 +52,8 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
 
         //Read .fxml file and show it
-        Parent root = FXMLLoader.load(getClass().getResource("loginscreen.fxml"));
-        primaryStage.setTitle("Test Login");
+        Parent root = FXMLLoader.load(getClass().getResource("applications/MainUtils/main.fxml"));
+        primaryStage.setTitle("Main Screen");
         primaryStage.setScene(new Scene(root, root.prefWidth(500), root.prefHeight(500)));
         primaryStage.show();
     }

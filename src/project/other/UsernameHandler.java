@@ -1,6 +1,6 @@
 package project.other;
 
-import project.applications.Main;
+import project.Main;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -30,5 +30,17 @@ public class UsernameHandler {
 
     public boolean containsUser(String username){
         return staff_usernames.contains(username);
+    }
+
+    public void reloadUsers(){
+        try {
+            PreparedStatement stmt = Main.getDatabaseManager().getConnection().prepareStatement(Queries.GET_STAFF_USERNAMES);
+            ResultSet rS = stmt.executeQuery();
+            while(rS.next()){
+                this.staff_usernames.add(rS.getString(1));
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
     }
 }

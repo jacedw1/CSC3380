@@ -1,6 +1,6 @@
 package project.other;
 
-import project.applications.Main;
+import project.Main;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -76,6 +76,7 @@ public class StaffWrapper {
         } catch (SQLException e){
             e.printStackTrace();
         }
+        Main.getUsernameHandler().reloadUsers();
     }
 }
 
