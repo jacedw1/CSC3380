@@ -5,10 +5,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import project.Utils.objects.UsernameHandlers.PatientUsernameHandler;
+import project.Utils.objects.UsernameHandlers.StaffUsernameHandler;
 import project.Utils.storage.DatabaseManager;
 import project.Utils.storage.Queries;
-import project.Utils.objects.StaffWrapper;
-import project.Utils.objects.UsernameHandler;
+import project.Utils.objects.Wrappers.StaffWrapper;
+import project.Utils.objects.UsernameHandlers.UsernameHandler;
 
 import java.sql.PreparedStatement;
 
@@ -19,6 +21,7 @@ public class Main extends Application {
     private static UsernameHandler usernameHandler;
     private static StaffWrapper staffWrapper = null;
     private static Stage stage;
+    private static boolean staff = true;
 
     @Override
     public void init() throws Exception {
@@ -37,7 +40,7 @@ public class Main extends Application {
         stmt.close();
 
         //Adding default staff member TurtleMD with password SmallTurtleHouse
-        stmt = databaseManager.getConnection().prepareStatement(Queries.ADD_STAFF_LOGIN);
+        stmt = databaseManager.getConnection().prepareStatement(Queries.CREATE_STAFF_LOGIN);
         //Replacing '?' in Query
         stmt.setString(1,"TurtleMD");
         stmt.setString(2,"SmallTurtleHouse");
@@ -45,7 +48,12 @@ public class Main extends Application {
         stmt.close();
 
         //Setting up the UsernameHandler to avoid needless DB Queries after program starts
-        usernameHandler = new UsernameHandler();
+        if(staff){
+            usernameHandler = new StaffUsernameHandler();
+        }
+        else{
+            usernameHandler = new PatientUsernameHandler();
+        }
 
     }
 
@@ -54,7 +62,7 @@ public class Main extends Application {
 
         Main.stage = primaryStage;
         //Read .fxml file and show it
-        Parent root = FXMLLoader.load(getClass().getResource("applications/MainUtils/main.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("applications/GeneralApps/MainUtils/main.fxml"));
         stage.setTitle("Main Screen");
         stage.setScene(new Scene(root, root.prefWidth(500), root.prefHeight(500)));
         stage.setResizable(false);

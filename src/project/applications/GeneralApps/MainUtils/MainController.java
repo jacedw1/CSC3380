@@ -1,4 +1,4 @@
-package project.applications.MainUtils;
+package project.applications.GeneralApps.MainUtils;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,13 +11,13 @@ import java.io.IOException;
 public class MainController {
 
     public void signupBtnAction(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../StaffApps/SignupUtils/signupscreen.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../../StaffApps/SignupUtils/signupscreen.fxml"));
         Main.getPrimaryStage().setTitle("Signup Screen");
         Main.getPrimaryStage().setScene(new Scene(root, root.prefWidth(500), root.prefHeight(500)));
     }
 
     public void loginBtnAction(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../StaffApps/LoginUtils/loginscreen.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../../StaffApps/LoginUtils/loginscreen.fxml"));
         Main.getPrimaryStage().setTitle("Login Screen");
         Main.getPrimaryStage().setScene(new Scene(root, root.prefWidth(500), root.prefHeight(500)));
     }

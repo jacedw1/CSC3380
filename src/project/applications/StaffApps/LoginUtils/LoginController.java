@@ -10,7 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import project.Main;
 import project.Utils.storage.Queries;
-import project.Utils.objects.StaffWrapper;
+import project.Utils.objects.Wrappers.StaffWrapper;
 
 import java.io.IOException;
 import java.sql.Connection;

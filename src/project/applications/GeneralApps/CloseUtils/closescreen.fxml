@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="250.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.applications.GeneralApps.CloseUtils.CloseController">
+   <children>
+      <Label fx:id="infoLabel" alignment="CENTER" prefHeight="125.0" prefWidth="250.0" text="APPLICATION CLOSE IN:">
+         <font>
+            <Font name="Times New Roman" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="timeLabel" alignment="TOP_CENTER" layoutY="125.0" prefHeight="125.0" prefWidth="250.0" text="5">
+         <font>
+            <Font name="Times New Roman" size="40.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

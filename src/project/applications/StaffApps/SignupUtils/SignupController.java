@@ -9,7 +9,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import project.Main;
-import project.Utils.objects.StaffWrapper;
+import project.Utils.objects.Wrappers.StaffWrapper;
 
 import java.io.IOException;
 
@@ -45,7 +45,7 @@ public class SignupController {
             usernameLabel.setText("Username Already Exists");
             return;
         }
-        StaffWrapper wrapper = new StaffWrapper(username, password, null, null);
+        StaffWrapper wrapper = new StaffWrapper(username, password);
         wrapper.saveChanges();
 
         Parent root = FXMLLoader.load(getClass().getResource("../LoginUtils/loginscreen.fxml"));

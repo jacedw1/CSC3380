@@ -17,9 +17,9 @@ public class Queries {
     public static String CREATE_USER_TABLE = "CREATE TABLE IF NOT EXISTS user_data (" +
             "username VARCHAR(16) PRIMARY KEY," +
             "password VARCHAR(16)," +
-            "next_appointment TIMESTAMP," +
             "last_name VARCHAR(32)," +
             "first_name VARCHAR(32)," +
+            "next_appointment TIMESTAMP," +
             "patient_id INTEGER," +
             "FOREIGN KEY(patient_id) REFERENCES pre_app_quest(patient_id) ON DELETE SET NULL );";
 
@@ -41,14 +41,26 @@ public class Queries {
             "4PM_available BOOLEAN DEFAULT TRUE," +
             "5PM_available BOOLEAN DEFAULT TRUE );";
 
-    public static String ADD_STAFF_LOGIN = "REPLACE INTO staff_data (username, password) VALUES(?,?);";
+    public static String CREATE_STAFF_LOGIN = "REPLACE INTO staff_data (username, password) VALUES(?,?);";
 
-    public static String ADD_STAFF_NAME = "REPLACE INTO staff_data (username, last_name, first_name) VALUES(?,?,?);";
+    public static String ADD_STAFF_NAME = "UPDATE staff_data SET last_name = ?, first_name = ? WHERE username = ?;";
 
     public static String SAVE_STAFF = "REPLACE INTO staff_data (username, password, last_name, first_name) VALUES(?,?,?,?);";
 
     public static String GET_STAFF_USERNAMES = "SELECT username FROM staff_data;";
 
     public static String GET_STAFF = "SELECT * FROM staff_data WHERE username = ?;";
+
+    public static String CREATE_PATIENT_LOGIN = "REPLACE INTO user_data (username, password) VALUES(?,?);";
+
+    public static String ADD_PATIENT_NAME = "UPDATE user_data SET last_name = ?, first_name = ? WHERE username = ?;";
+
+    public static String ADD_PATIENT_ID = "UPDATE user_data SET patient_id = ? WHERE username = ?;";
+
+    public static String SAVE_PATIENTS = "REPLACE INTO user_data (username, password, last_name, first_name, next_appointment, patient_id) VALUES(?,?,?,?,?,?);";
+
+    public static String GET_PATIENT_USERNAMES = "SELECT username FROM user_data;";
+
+    public static String GET_PATIENT = "SELECT * FROM user_data WHERE username = ?;";
 }
 
