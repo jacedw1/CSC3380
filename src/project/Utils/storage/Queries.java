@@ -1,4 +1,4 @@
-package project.other;
+package project.Utils.storage;
 
 public class Queries {
     public static String CREATE_QUESTIONNAIRE_TABLE = "CREATE TABLE IF NOT EXISTS pre_app_quest (" +

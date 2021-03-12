@@ -1,17 +1,15 @@
-package project.applications.SignupUtils;
+package project.applications.StaffApps.SignupUtils;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
 import project.Main;
-import project.other.StaffWrapper;
+import project.Utils.objects.StaffWrapper;
 
 import java.io.IOException;
 
@@ -50,11 +48,8 @@ public class SignupController {
         StaffWrapper wrapper = new StaffWrapper(username, password, null, null);
         wrapper.saveChanges();
 
-        ((Button) event.getSource()).getParent().getScene().getWindow().hide();
-        Stage primaryStage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("../LoginUtils/loginscreen.fxml"));
-        primaryStage.setTitle("Login Screen");
-        primaryStage.setScene(new Scene(root, root.prefWidth(500), root.prefHeight(500)));
-        primaryStage.show();
+        Main.getPrimaryStage().setTitle("Login Screen");
+        Main.getPrimaryStage().setScene(new Scene(root, root.prefWidth(500), root.prefHeight(500)));
     }
 }

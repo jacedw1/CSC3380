@@ -1,6 +1,7 @@
-package project.other;
+package project.Utils.objects;
 
 import project.Main;
+import project.Utils.storage.Queries;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

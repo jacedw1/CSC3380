@@ -1,14 +1,18 @@
-package project.applications.LoginUtils;
+package project.applications.StaffApps.LoginUtils;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import project.Main;
-import project.other.Queries;
-import project.other.StaffWrapper;
+import project.Utils.storage.Queries;
+import project.Utils.objects.StaffWrapper;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -33,7 +37,7 @@ public class LoginController {
     @FXML
     private Label usernameLabel;
 
-    public void loginAction(MouseEvent event) {
+    public void loginAction(MouseEvent event) throws IOException {
 
         //Set username to the username input
         String username = this.userTxt.getText();
@@ -84,5 +88,10 @@ public class LoginController {
         usernameLabel.setStyle("-fx-text-fill: LIME");
         resultLabel.setText("Login Succeeded to: ");
         usernameLabel.setText(username);
+
+
+        Parent root = FXMLLoader.load(getClass().getResource("../HomeUtils/files/homescreen.fxml"));
+        Main.getPrimaryStage().setTitle("Home Screen");
+        Main.getPrimaryStage().setScene(new Scene(root, root.prefWidth(500), root.prefHeight(500)));
     }
 }
