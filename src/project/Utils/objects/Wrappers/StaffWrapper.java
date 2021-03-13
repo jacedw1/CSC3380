@@ -1,7 +1,6 @@
 package project.Utils.objects.Wrappers;
 
 import project.Main;
-import project.Utils.objects.UsernameHandlers.StaffUsernameHandler;
 import project.Utils.storage.Queries;
 
 import java.sql.Connection;
@@ -35,7 +34,7 @@ public class StaffWrapper extends UserWrapper {
         } catch (SQLException e){
             e.printStackTrace();
         }
-        ((StaffUsernameHandler) Main.getUsernameHandler()).reloadUsers();
+        Main.getUsernameHandler().reloadStaffUsers();
     }
 
 }

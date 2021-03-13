@@ -1,6 +1,7 @@
 package project.Utils.storage;
 
 public class Queries {
+
     public static String CREATE_QUESTIONNAIRE_TABLE = "CREATE TABLE IF NOT EXISTS pre_app_quest (" +
             "patient_id INTEGER PRIMARY KEY AUTO_INCREMENT," +
             "rounded_temp INTEGER," +
@@ -14,7 +15,7 @@ public class Queries {
             "flu VARCHAR(3)," +
             "bronchitis VARCHAR(3) );";
 
-    public static String CREATE_USER_TABLE = "CREATE TABLE IF NOT EXISTS user_data (" +
+    public static String CREATE_PATIENT_TABLE = "CREATE TABLE IF NOT EXISTS user_data (" +
             "username VARCHAR(16) PRIMARY KEY," +
             "password VARCHAR(16)," +
             "last_name VARCHAR(32)," +
@@ -41,7 +42,7 @@ public class Queries {
             "4PM_available BOOLEAN DEFAULT TRUE," +
             "5PM_available BOOLEAN DEFAULT TRUE );";
 
-    public static String CREATE_STAFF_LOGIN = "REPLACE INTO staff_data (username, password) VALUES(?,?);";
+    public static String ADD_NEW_STAFF_LOGIN = "REPLACE INTO staff_data (username, password) VALUES(?,?);";
 
     public static String ADD_STAFF_NAME = "UPDATE staff_data SET last_name = ?, first_name = ? WHERE username = ?;";
 
@@ -51,13 +52,13 @@ public class Queries {
 
     public static String GET_STAFF = "SELECT * FROM staff_data WHERE username = ?;";
 
-    public static String CREATE_PATIENT_LOGIN = "REPLACE INTO user_data (username, password) VALUES(?,?);";
+    public static String ADD_NEW_PATIENT_LOGIN = "REPLACE INTO user_data (username, password) VALUES(?,?);";
 
     public static String ADD_PATIENT_NAME = "UPDATE user_data SET last_name = ?, first_name = ? WHERE username = ?;";
 
     public static String ADD_PATIENT_ID = "UPDATE user_data SET patient_id = ? WHERE username = ?;";
 
-    public static String SAVE_PATIENTS = "REPLACE INTO user_data (username, password, last_name, first_name, next_appointment, patient_id) VALUES(?,?,?,?,?,?);";
+    public static String SAVE_PATIENTS = "REPLACE INTO user_data (username, password, last_name, first_name, next_appointment) VALUES(?,?,?,?,?);";
 
     public static String GET_PATIENT_USERNAMES = "SELECT username FROM user_data;";
 

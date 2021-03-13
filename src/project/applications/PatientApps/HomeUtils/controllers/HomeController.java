@@ -1,4 +1,4 @@
-package project.applications.StaffApps.HomeUtils.controllers;
+package project.applications.PatientApps.HomeUtils.controllers;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

@@ -5,13 +5,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import project.Utils.objects.UsernameHandlers.PatientUsernameHandler;
-import project.Utils.objects.UsernameHandlers.StaffUsernameHandler;
+import project.Utils.objects.Wrappers.UserWrapper;
 import project.Utils.storage.DatabaseManager;
 import project.Utils.storage.Queries;
-import project.Utils.objects.Wrappers.StaffWrapper;
-import project.Utils.objects.UsernameHandlers.UsernameHandler;
+import project.Utils.objects.UsernameHandler;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 
@@ -19,9 +18,8 @@ public class Main extends Application {
 
     private static DatabaseManager databaseManager;
     private static UsernameHandler usernameHandler;
-    private static StaffWrapper staffWrapper = null;
+    private static UserWrapper userWrapper = null;
     private static Stage stage;
-    private static boolean staff = true;
 
     @Override
     public void init() throws Exception {
@@ -33,27 +31,39 @@ public class Main extends Application {
 //        should look similar to this:
 //        databaseManager = new DatabaseManager("jdbc:mysql://localhost:3306/", "testing_java", "root", "password");
 //        gonna try to set this up remotely, but for now it's local
-
+        Connection con = databaseManager.getConnection();
         //Creating table of staff
-        PreparedStatement stmt = databaseManager.getConnection().prepareStatement(Queries.CREATE_STAFF_TABLE);
+        PreparedStatement stmt = con.prepareStatement(Queries.CREATE_STAFF_TABLE);
         stmt.execute();
-        stmt.close();
 
         //Adding default staff member TurtleMD with password SmallTurtleHouse
-        stmt = databaseManager.getConnection().prepareStatement(Queries.CREATE_STAFF_LOGIN);
+        stmt = con.prepareStatement(Queries.ADD_NEW_STAFF_LOGIN);
         //Replacing '?' in Query
         stmt.setString(1,"TurtleMD");
         stmt.setString(2,"SmallTurtleHouse");
         stmt.execute();
+
+        stmt = con.prepareStatement(Queries.CREATE_SCHEDULE_TABLE);
+        stmt.execute();
+
+        stmt = con.prepareStatement(Queries.CREATE_QUESTIONNAIRE_TABLE);
+        stmt.execute();
+        //Creating table of patients
+        stmt = con.prepareStatement(Queries.CREATE_PATIENT_TABLE);
+        stmt.execute();
+
+        //Adding default patient DefaultUser with password DefaultPass
+        stmt = con.prepareStatement(Queries.ADD_NEW_PATIENT_LOGIN);
+        //Replacing '?' in Query
+        stmt.setString(1,"DefaultUser");
+        stmt.setString(2,"DefaultPass");
+        stmt.execute();
+
+
         stmt.close();
 
         //Setting up the UsernameHandler to avoid needless DB Queries after program starts
-        if(staff){
-            usernameHandler = new StaffUsernameHandler();
-        }
-        else{
-            usernameHandler = new PatientUsernameHandler();
-        }
+        usernameHandler = new UsernameHandler();
 
     }
 
@@ -87,12 +97,12 @@ public class Main extends Application {
         return usernameHandler;
     }
 
-    public static StaffWrapper getStaffWrapper() {
-        return staffWrapper;
+    public static UserWrapper getUserWrapper() {
+        return userWrapper;
     }
 
-    public static void setStaffWrapper(StaffWrapper staffWrapper) {
-        Main.staffWrapper = staffWrapper;
+    public static void setUserWrapper(UserWrapper userWrapper) {
+        Main.userWrapper = userWrapper;
     }
 
     public static Stage getPrimaryStage(){

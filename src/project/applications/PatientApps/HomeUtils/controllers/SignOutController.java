@@ -1,14 +1,15 @@
-package project.applications.StaffApps.HomeUtils.controllers;
+package project.applications.PatientApps.HomeUtils.controllers;
+
 
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import project.Main;
-import project.Utils.objects.Wrappers.StaffWrapper;
+import project.Utils.objects.Wrappers.PatientWrapper;
 
 public class SignOutController {
 
     public void confirmBtnAction(MouseEvent event) {
-        ((StaffWrapper) Main.getUserWrapper()).saveChanges();
+        ((PatientWrapper) Main.getUserWrapper()).saveChanges();
         Main.getPrimaryStage().hide();
         ((Node) event.getSource()).getScene().getWindow().hide();
     }
