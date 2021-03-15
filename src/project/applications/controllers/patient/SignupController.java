@@ -1,4 +1,4 @@
-package project.applications.PatientApps.SignupUtils;
+package project.applications.controllers.patient;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -50,7 +50,7 @@ public class SignupController {
         ((PatientWrapper) wrapper).saveChanges();
 
         Main.setUserWrapper(wrapper);
-        Parent root = FXMLLoader.load(getClass().getResource("../../GeneralApps/LoginUtils/loginscreen.fxml"));
+        Parent root = FXMLLoader.load(Main.class.getResource("applications/resources/fxml/general/loginscreen.fxml"));
         Main.getPrimaryStage().setTitle("Login Screen");
         Main.getPrimaryStage().setScene(new Scene(root, root.prefWidth(500), root.prefHeight(500)));
     }

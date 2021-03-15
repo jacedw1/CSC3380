@@ -1,4 +1,4 @@
-package project.applications.PatientApps.HomeUtils.controllers;
+package project.applications.controllers.patient;
 
 
 import javafx.scene.Node;

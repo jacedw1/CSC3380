@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 
 
-<AnchorPane prefHeight="250.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.applications.StaffApps.HomeUtils.controllers.SignOutController">
+<AnchorPane prefHeight="250.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.applications.controllers.staff.SignOutController">
    <children>
       <Button fx:id="confirmBtn" layoutX="85.0" layoutY="99.0" mnemonicParsing="false" onMouseReleased="#confirmBtnAction" prefHeight="53.0" prefWidth="81.0" text="Confirm">
          <font>

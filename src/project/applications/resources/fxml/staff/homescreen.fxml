@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 
 
-<AnchorPane prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.applications.StaffApps.HomeUtils.controllers.HomeController">
+<AnchorPane prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.applications.controllers.staff.HomeController">
    <children>
       <Button fx:id="nextPatientBtn" mnemonicParsing="false" onMouseReleased="#nextPatientAction" prefHeight="50.0" prefWidth="125.0" text="View Next Patient">
          <font>

@@ -1,4 +1,4 @@
-package project.applications.StaffApps.HomeUtils.controllers;
+package project.applications.controllers.staff;
 
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
