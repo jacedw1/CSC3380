@@ -26,7 +26,6 @@ public class Main extends Application {
         super.init();
 
         databaseManager = new DatabaseManager("jdbc:mysql://db4free.net:3306/", "turtlemd", "turtlemd", "SmallTurtleHouse");
-        //initiate connection with database using your own data
 //        databaseManager = new DatabaseManager(url, databaseName, username, password);
 //        should look similar to this:
 //        databaseManager = new DatabaseManager("jdbc:mysql://localhost:3306/", "testing_java", "root", "password");

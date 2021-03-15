@@ -44,10 +44,7 @@ public class UsernameHandler {
     }
 
     public boolean containsUser(String username, boolean staff){
-        if(staff) {
-            return this.staff_usernames.contains(username);
-        }
-        return this.patient_usernames.contains(username);
+        return staff ? this.staff_usernames.contains(username) : this.patient_usernames.contains(username);
     }
 
     public void reloadPatientUsers(){
